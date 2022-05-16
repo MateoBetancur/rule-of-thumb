@@ -86,7 +86,7 @@
     outline: 0 none;
 }
 
-@media all and (min-width: $min-desktop) {
+@media all and (min-width: $desktop) {
     .nav {
         min-height: 22vh;
     }
