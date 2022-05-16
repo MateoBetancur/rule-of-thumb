@@ -13,7 +13,7 @@ export const Header = () => {
                 <div className={styles["hero__featured-card"]}>
                     <div className={styles["featured-card__glass-background"]}></div>
                     <div className={styles["featured-card__content"]}>
-                        <p className={styles["featured-card__hairline"]}>What's your opinion on</p>
+                        <p className={styles["featured-card__hairline"]}>What&quots your opinion on</p>
                         <h2 className={styles["featured-card__title"]}>Pope Francis?</h2>
                         <p className={styles["featured-card__desc"]}>
                             He’s talking tough on clergy sexual abuse, or is he just another pervert protector? (thumbs down) or a true pedophile punishing pontiff? (thumbs up)
