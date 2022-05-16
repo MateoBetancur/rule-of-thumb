@@ -2,6 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { NavBar } from '../components/NavBar/NavBar';
 import { Header } from '../components/Header/Header';
+import { BannerTop } from '../components/Banners/BannerTop';
+import { BannerBottom } from '../components/Banners/BannerBottom';
 
 const Home: NextPage = () => {
   return (
@@ -13,6 +15,11 @@ const Home: NextPage = () => {
       </Head>
       <NavBar />
       <Header />
+      <div className="max-centered">
+        <BannerTop />
+        <BannerBottom />
+        <hr role="separator" />
+      </div>
     </div>
   )
 }
