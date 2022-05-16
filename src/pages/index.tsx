@@ -4,6 +4,7 @@ import { NavBar } from '../components/NavBar/NavBar';
 import { Header } from '../components/Header/Header';
 import { BannerTop } from '../components/Banners/BannerTop';
 import { BannerBottom } from '../components/Banners/BannerBottom';
+import { Footer } from '../components/Footer/Footer';
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +20,7 @@ const Home: NextPage = () => {
         <BannerTop />
         <BannerBottom />
         <hr role="separator" />
+        <Footer />
       </div>
     </div>
   )
