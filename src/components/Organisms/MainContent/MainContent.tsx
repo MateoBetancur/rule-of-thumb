@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from 'react';
 import styles from './MainContent.module.scss';
 import { Dropdown } from '../../Atoms';
 import { Character, DataResponse } from '../../../interfaces/characters.interface';
+import { CharacterCard } from '../../Molecules';
 
 interface Props {
     characters: Character[];
@@ -11,22 +12,12 @@ interface Props {
 export const MainContent: FC<Props> = ({ characters }) => {
     console.log(characters);
 
-    const [optSelected, setOptSelected] = useState('list')
+    const [optSelected, setOptSelected] = useState<'list' | 'grid'>('list');
 
     const options: string[] = ['list', 'grid'];
-    const handleSelected = (opt: string): void => {
+    const handleSelected = (opt: 'list' | 'grid'): void => {
         setOptSelected(opt);
     }
-
-    useEffect(() => {
-        // console.log("Acá");
-        // async function fetchData() {
-        //     const { data } = await api.get<DataResponse>('/api/getCharacters');
-        //     console.log(data);
-        // }
-        // fetchData()
-        // setEntries(res.data.entriesData);
-    }, []);
 
     return (
         <main className='main-container' role='main'>
@@ -35,7 +26,9 @@ export const MainContent: FC<Props> = ({ characters }) => {
                 <Dropdown options={options} opSelected={optSelected} handleSelected={handleSelected} />
             </div>
             <div className=''>
-
+                {characters.map(character =>
+                    <CharacterCard key={character.id} character={character} type={optSelected} />
+                )}
             </div>
         </main>
     )
