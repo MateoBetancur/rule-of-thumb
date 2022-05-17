@@ -11,10 +11,10 @@
 }
 
 .card--grid {
-    width: 50%;
-    max-width: 351px;
+    width: 100%;
+    max-width: 300px;
     height: auto;
-    max-height: 351px;
+    max-height: 300px;
     position: relative;
     img {
         height: 100%;
@@ -71,7 +71,7 @@
     align-items: flex-end;
     justify-content: end;
     gap: 12px;
-    padding: 0 12px 46px 10%;
+    padding: 0 11% 46px;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
@@ -80,7 +80,7 @@
     display: flex;
     flex-direction: column;
     justify-content: start;
-    gap: 18px;
+    gap: 8px;
     h3 {
         color: $color-white;
         font-size: 28px;
@@ -128,7 +128,7 @@
 
 .card__body_reputation--grid {
     position: absolute;
-    top: calc(50% - 30px);
+    top: 36%;
     left: 0;
 }
 
@@ -137,6 +137,24 @@
     width: 100%;
     bottom: 0;
     left: 0;
+}
+
+@media all and (min-width: $tablet) {
+    .card--grid {
+        width: 50%;
+        max-width: 351px;
+        max-height: 351px;
+    }
+    .card__body__info {
+        gap: 18px;
+    }
+    .card__body--grid {
+        gap: 12px;
+        padding: 0 12px 46px 10%;
+    }
+    .card__body_reputation--grid {
+        top: 41%;
+    }
 }
 
 @media all and (min-width: $desktop) {
@@ -154,5 +172,8 @@
         h3 {
             line-height: 34px;
         }
+    }
+    .card__body_reputation--grid {
+        top: 39%;
     }
 }

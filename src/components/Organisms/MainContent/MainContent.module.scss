@@ -1,9 +1,19 @@
 @import "/src/styles/sizes.module.scss";
 @import "/src/styles/variables.module.scss";
-
+.main-container__header {
+    margin-bottom: 24px;
+}
 .main-container__header h2 {
     margin-bottom: 0;
 }
+.main-container__cards--grid {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: scroll;
+    gap: 12px;
+}
+
 @media all and (min-width: $tablet) {
     .main-container__header {
         display: flex;
@@ -11,16 +21,16 @@
         justify-content: space-between;
         margin-bottom: 28px;
     }
-    .main-container__cards--list{
+    .main-container__cards--list {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
-    .main-container__cards--grid{
+    .main-container__cards--grid {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        overflow: hidden;
         gap: 21px;
-
     }
 }

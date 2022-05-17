@@ -12,7 +12,7 @@ interface Props {
 export const MainContent: FC<Props> = ({ characters }) => {
     console.log(characters);
 
-    const [optSelected, setOptSelected] = useState<'list' | 'grid'>('list');
+    const [optSelected, setOptSelected] = useState<'list' | 'grid'>('grid');
 
     const options: string[] = ['list', 'grid'];
     const handleSelected = (opt: 'list' | 'grid'): void => {
