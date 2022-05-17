@@ -31,9 +31,9 @@ const Home: NextPage<Props> = ({ characters }) => {
   )
 }
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await api.get<DataResponse>('/api/getCharacters');
+  const { data } = await api.get<DataResponse<Character[]>>('/api/getCharacters');
   console.log(data);
-  
+
   return {
     props: {
       characters: data.data

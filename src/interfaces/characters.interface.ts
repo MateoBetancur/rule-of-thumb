@@ -1,5 +1,5 @@
-export interface DataResponse {
-    data: Character[];
+export interface DataResponse<d> {
+    data: d;
     message: string
 }
 
