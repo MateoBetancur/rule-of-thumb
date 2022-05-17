@@ -5,6 +5,7 @@
     width: 131px;
     border-top: 2px solid $color-darker-gray;
     display: none;
+    position: relative;
 }
 
 .dropdown button {
@@ -26,6 +27,10 @@
 
 .dropdown-list--open {
     display: block;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    background-color: $color-white;
 }
 @media all and (min-width: $tablet) {
     .dropdown {

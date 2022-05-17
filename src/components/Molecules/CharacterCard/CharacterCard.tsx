@@ -36,7 +36,7 @@ export const CharacterCard: FC<Props> = ({ character, type }) => {
                             Vote Now
                         </button>
                     </div>
-                    <button className={`icon-button ${styles["icon-button"]} ${styles["card__body_reputation"]} `} aria-label="thumbs down">
+                    <button className={`icon-button ${styles["icon-button"]} ${styles[`card__body_reputation--${type}`]} `} aria-label="thumbs down">
                         <img src="/img/thumbs-down.svg" alt="thumbs down" />
                     </button>
                 </div>

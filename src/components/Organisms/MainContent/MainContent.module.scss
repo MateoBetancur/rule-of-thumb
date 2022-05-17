@@ -9,5 +9,18 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        margin-bottom: 28px;
+    }
+    .main-container__cards--list{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .main-container__cards--grid{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 21px;
+
     }
 }

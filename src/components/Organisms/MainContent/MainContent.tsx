@@ -21,15 +21,15 @@ export const MainContent: FC<Props> = ({ characters }) => {
 
     return (
         <main className='main-container' role='main'>
-            <div className={styles["main-container__header"]}>
+            <div className={styles['main-container__header']}>
                 <h2>Previous Rulings</h2>
                 <Dropdown options={options} opSelected={optSelected} handleSelected={handleSelected} />
             </div>
-            <div className=''>
+            <section className={styles[`main-container__cards--${optSelected}`]}>
                 {characters.map(character =>
                     <CharacterCard key={character.id} character={character} type={optSelected} />
                 )}
-            </div>
+            </section>
         </main>
     )
 }
