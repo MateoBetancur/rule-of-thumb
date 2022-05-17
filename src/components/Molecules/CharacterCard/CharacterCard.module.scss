@@ -18,24 +18,61 @@
     top: 0;
     right: 0;
     display: flex;
-    padding-left: 10%;
+    align-items: center;
+    padding: 0 12px 36px 10%;
     background: linear-gradient(
         90deg,
         rgba(0, 0, 0, 0.0001) 0%,
-        #888888 12.8%,
+        #888888 18.8%,
         #666666 50%,
         rgba(51, 51, 51, 0.6) 71.88%
     );
+
+    button[aria-label="vote now"] {
+        width: 107px;
+        height: 30px;
+        background-color: $color-darker-background;
+        border: 1px solid $color-white;
+        font-size: 15px;
+        color: $color-white;
+    }
 }
 
 .card__body__info {
     color: $color-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
     h3 {
         color: $color-white;
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0;
     }
 }
+
+.card__body__vote__btns {
+    display: flex;
+    gap: 12px;
+}
+
+.icon-button {
+    width: 30px;
+    height: 30px;
+    img {
+        width: 16px;
+    }
+}
+
 .card__body_reputation {
     position: absolute;
     top: 0;
+    left: 0;
+}
+
+.card_thumb-container {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     left: 0;
 }

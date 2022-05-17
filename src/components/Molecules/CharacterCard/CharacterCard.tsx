@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { Character } from '../../../interfaces/characters.interface';
+import { ThumbGauge } from '../../Atoms';
 import styles from './CharacterCard.module.scss';
 interface Props {
     character: Character;
@@ -31,12 +32,18 @@ export const CharacterCard: FC<Props> = ({ character, type }) => {
                         <button className={`icon-button ${styles["icon-button"]}`} aria-label="thumbs down">
                             <img src="/img/thumbs-down.svg" alt="thumbs down" />
                         </button>
+                        <button className={`icon-button`} aria-label="vote now">
+                            Vote Now
+                        </button>
                     </div>
                     <button className={`icon-button ${styles["icon-button"]} ${styles["card__body_reputation"]} `} aria-label="thumbs down">
                         <img src="/img/thumbs-down.svg" alt="thumbs down" />
                     </button>
                 </div>
 
+            </section>
+            <section className={styles["card_thumb-container"]}>
+                <ThumbGauge />
             </section>
         </article>
     )
