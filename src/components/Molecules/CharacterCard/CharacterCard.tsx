@@ -43,7 +43,7 @@ export const CharacterCard: FC<Props> = ({ character, type }) => {
 
             </section>
             <section className={styles["card_thumb-container"]}>
-                <ThumbGauge />
+                <ThumbGauge votes={votes} />
             </section>
         </article>
     )

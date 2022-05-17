@@ -1,14 +1,31 @@
-import { FC } from 'react'
+import { FC, useState, useEffect } from 'react';
 import styles from './ThumbGauge.module.scss'
-export const ThumbGauge: FC = () => {
+import { Votes } from '../../../interfaces/characters.interface';
+import { calcPercent } from '../../../utils/calculations';
+
+interface Props {
+    votes: Votes
+}
+export const ThumbGauge: FC<Props> = ({ votes }) => {
+    const [upPercent, setUpPercent] = useState(0);
+    const [downPercent, setDownPercent] = useState(0);
+
+    useEffect(() => {
+        const total = votes.negative + votes.positive;
+        setDownPercent(calcPercent(votes.negative, total))
+        setUpPercent(calcPercent(votes.positive, total))
+    }, [])
+
+
+
     return (
         <section className={styles['thumb-gauge']}>
-            <div className={styles['thumb-gauge__up']} style={{ width: '50%' }} aria-label='thumb gauge up'>
+            <div className={styles['thumb-gauge__up']} style={{ width: `${upPercent}%` }} aria-label='thumb gauge up'>
                 <img src="/img/thumbs-up.svg" alt="thumbs up" />
-                <p>50%</p>
+                <p>{upPercent}</p>
             </div>
-            <div className={styles['thumb-gauge__down']} style={{ width: '50%' }} aria-label='thumb gauge down'>
-                <p>50%</p>
+            <div className={styles['thumb-gauge__down']} style={{ width: `${downPercent}%` }} aria-label='thumb gauge down'>
+                <p>{downPercent}</p>
                 <img src="/img/thumbs-down.svg" alt="thumbs down" />
             </div>
         </section>
