@@ -1,0 +1,13 @@
+@import "/src/styles/sizes.module.scss";
+@import "/src/styles/variables.module.scss";
+
+.main-container__header h2 {
+    margin-bottom: 0;
+}
+@media all and (min-width: $tablet) {
+    .main-container__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

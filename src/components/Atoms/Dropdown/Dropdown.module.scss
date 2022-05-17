@@ -1,0 +1,34 @@
+@import "/src/styles/sizes.module.scss";
+@import "/src/styles/variables.module.scss";
+
+.dropdown {
+    width: 131px;
+    border-top: 2px solid $color-darker-gray;
+    display: none;
+}
+
+.dropdown button {
+    width: 100%;
+    height: 28px;
+    border: 2px solid $color-darker-gray;
+    border-top: 0px;
+    position: relative;
+    cursor: pointer;
+    svg {
+        position: absolute;
+        right: 6.5px;
+        top: 10px;
+    }
+}
+.dropdown-list--closed {
+    display: none;
+}
+
+.dropdown-list--open {
+    display: block;
+}
+@media all and (min-width: $tablet) {
+    .dropdown {
+        display: block;
+    }
+}
