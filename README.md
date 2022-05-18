@@ -1,8 +1,18 @@
+# Rule of thumb - Zemoga test
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, create .env.local in the root directory and then you must declare the specified environment variables in the mail
+
+```bash
+FIREBASE_SERVICE_ACCOUNT_KEY
+FIREBASE_DATABASE_URL
+DOMAIN
+```
+
+Second, run the development server:
 
 ```bash
 npm run dev
@@ -12,23 +22,49 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## How to use
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Basic Structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```bash
+public
+|
+src
+|_ components
+|   |_ Atoms
+|   |_ Molecules
+|   |_ Organism
+|_ interfaces
+|_ pages
+|   |_ api
+|_ styles
+|_ utils
+```
 
-## Learn More
+**`public`** in this folder you will find all static assets like imgs etc.
 
-To learn more about Next.js, take a look at the following resources:
+**`components`** structure based on atomic design reference.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**`interfaces`** in this folder you will find the interface used for controversial people.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**`pages`** in this folder you will find the main page of the aplication, inside of **index.html** is the method that returns the controversial people from the database to the app.
+
+**`styles`** in this folder you will find the global styles and the sass variables.
+
+**`utils`** in this folder you will find some shared functions for the app, like the connection with firebase and the function to handle local storage.
+
+### Data Persistent
+
+In the `pages/api` directory is mapped three services to connect to firebase.
+
+- `pages/api/getCharacters` this service returns all controversial people.
+- `pages/api/createCharacter` this service creates a new controversial people.
+- `pages/api/updateVotes` this service updates a the votes of controversial people.
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+You can see the app deployment in [Rule of thumb - Zemoga test](https://rule-of-thumb-zemoga.vercel.app/).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Author
+`Mateo Echeverri Betancur`
+# Thanks for you attention
