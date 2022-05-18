@@ -9,11 +9,10 @@ export const toggleIfVoted = (id: string) => {
 }
 
 const characterVoted = (): string[] => {
-    return JSON.parse(localStorage.getItem('favorites') || '[]');
+    return JSON.parse(localStorage.getItem('charactersVoted') || '[]');
 }
 
 export const existInVoted = (id: string): boolean => {
-    console.log(id);
     if (typeof window === 'undefined') return false;
     const charactersVoted: string[] = characterVoted();
     return charactersVoted.includes(id);

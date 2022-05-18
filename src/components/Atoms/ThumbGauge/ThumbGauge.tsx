@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import styles from './ThumbGauge.module.scss'
 import { Votes } from '../../../interfaces/characters.interface';
-import { calcPercent } from '../../../utils/calculations';
+import { calcPercent } from '../../../utils/commonsService';
 
 interface Props {
     votes: Votes
@@ -14,8 +14,10 @@ export const ThumbGauge: FC<Props> = ({ votes }) => {
         const total = votes.negative + votes.positive;
         setDownPercent(calcPercent(votes.negative, total))
         setUpPercent(calcPercent(votes.positive, total))
-    }, [])
-
+        console.log(votes);
+        
+    }, [votes])
+    
 
 
     return (

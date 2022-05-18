@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
 import styles from './MainContent.module.scss';
 import { Dropdown } from '../../Atoms';
@@ -17,6 +17,9 @@ export const MainContent: FC<Props> = ({ characters }) => {
     const handleSelected = (opt: 'list' | 'grid'): void => {
         setOptSelected(opt);
     }
+    const sendVote = (character: Character) => {
+        console.log(character);
+    }
 
     return (
         <main className='main-container' role='main'>
@@ -26,7 +29,7 @@ export const MainContent: FC<Props> = ({ characters }) => {
             </div>
             <section className={styles[`main-container__cards--${optSelected}`]}>
                 {characters.map(character =>
-                    <CharacterCard key={character.id} character={character} type={optSelected} />
+                    <CharacterCard key={character.id} character={character} type={optSelected} sendVote={sendVote} />
                 )}
             </section>
         </main>
