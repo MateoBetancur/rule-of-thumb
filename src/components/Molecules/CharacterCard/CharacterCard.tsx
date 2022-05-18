@@ -45,6 +45,7 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
             setPerson({ ...person, votes: { ...person.votes } })
             toggleIfVoted(res.data.data);
             setIsLoading(false)
+            setSelectedVote(undefined)
         }).catch(() => {
             setIsLoading(false)
             setSmallText("Oops, something went wrong, try again")

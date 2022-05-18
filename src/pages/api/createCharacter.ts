@@ -4,7 +4,6 @@ import db from '../../utils/firebaseConfig';
 import { DataResponse } from '../../interfaces/characters.interface';
 
 export default async function createCharacter(req: NextApiRequest, res: NextApiResponse<DataResponse<string>>) {
-    console.log(req.body);
     try {
         const { id } = await db.collection('characters').add({
             ...req.body,
