@@ -17,9 +17,6 @@ export const MainContent: FC<Props> = ({ characters }) => {
     const handleSelected = (opt: 'list' | 'grid'): void => {
         setOptSelected(opt);
     }
-    const sendVote = (character: Character) => {
-        console.log(character);
-    }
 
     return (
         <main className='main-container' role='main'>
@@ -29,7 +26,7 @@ export const MainContent: FC<Props> = ({ characters }) => {
             </div>
             <section className={styles[`main-container__cards--${optSelected}`]}>
                 {characters.map(character =>
-                    <CharacterCard key={character.id} character={character} type={optSelected} sendVote={sendVote} />
+                    <CharacterCard key={character.id} character={character} type={optSelected} />
                 )}
             </section>
         </main>

@@ -14,8 +14,6 @@ export const ThumbGauge: FC<Props> = ({ votes }) => {
         const total = votes.negative + votes.positive;
         setDownPercent(calcPercent(votes.negative, total))
         setUpPercent(calcPercent(votes.positive, total))
-        console.log(votes);
-        
     }, [votes])
     
 

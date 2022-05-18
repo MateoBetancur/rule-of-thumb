@@ -1,23 +1,22 @@
 import { FC, useEffect, useState } from 'react';
-import { Character } from '../../../interfaces/characters.interface';
+import { Character, DataResponse } from '../../../interfaces/characters.interface';
 import { ThumbGauge } from '../../Atoms';
 import styles from './CharacterCard.module.scss';
 import { calcPercent, getSmallText } from '../../../utils/commonsService';
 import { existInVoted, toggleIfVoted } from '../../../utils/localstorageService';
+import api from '../../../utils/axiosConfig';
 
 interface Props {
     character: Character;
     type: 'list' | 'grid';
-    sendVote(character: Character): void;
 }
-export const CharacterCard: FC<Props> = ({ character, type, sendVote }) => {
+export const CharacterCard: FC<Props> = ({ character, type, }) => {
     const [person, setPerson] = useState<Character>(character);
     const [reputation, setReputation] = useState<string>('');
     const [selectedVote, setSelectedVote] = useState<'negative' | 'positive' | undefined>(undefined);
     const [isVoted, setIsVoted] = useState<boolean>(false);
-
-
     const [smallText, setSmallText] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
         getReputation()
@@ -35,17 +34,22 @@ export const CharacterCard: FC<Props> = ({ character, type, sendVote }) => {
         setReputation(rep);
     }
 
-    const handleSelectVote = (type: 'negative' | 'positive'): void => {
-        setSelectedVote(type);
+    const handleSelectVote = (voteType: 'negative' | 'positive'): void => {
+        setSelectedVote(voteType);
     }
 
-    const onSubmitVote = (): void => {
+    const onSubmitVote = async (): Promise<void> => {
+        setIsLoading(true)
         person.votes[selectedVote as 'negative' | 'positive']++;
-        console.log(person.votes);
-        setPerson({ ...person, votes: { ...person.votes } })
-        sendVote(person);
-        toggleIfVoted(person.id);
-
+        await api.put<DataResponse<string>>('/api/updateVotes', person).then((res) => {
+            setPerson({ ...person, votes: { ...person.votes } })
+            toggleIfVoted(res.data.data);
+            setIsLoading(false)
+        }).catch(() => {
+            setIsLoading(false)
+            setSmallText("Oops, something went wrong, try again")
+            return new Error("error in updateVotes service")
+        });
     }
 
     const onVoteAgain = (): void => {
@@ -78,8 +82,8 @@ export const CharacterCard: FC<Props> = ({ character, type, sendVote }) => {
                                     >
                                         <img src="/img/thumbs-down.svg" alt="thumbs down" />
                                     </button>
-                                    <button className={`icon-button`} disabled={!selectedVote} aria-label="vote now" onClick={onSubmitVote}>
-                                        Vote Now
+                                    <button className={`icon-button`} disabled={!selectedVote || isLoading} aria-label="vote now" onClick={onSubmitVote}>
+                                        {!isLoading ? 'Vote Now' : '...Loading'}
                                     </button>
                                 </> :
                                 <button className={`icon-button`} aria-label="vote again" onClick={onVoteAgain}>

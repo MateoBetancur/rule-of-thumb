@@ -11,7 +11,7 @@ export default async function updateVotes(req: NextApiRequest, res: NextApiRespo
             votes: req.body.votes
         });
         res.status(200).json({
-            "data": "",
+            "data": req.body.id,
             "message": "successfully updated"
         })
     } catch (error) {
