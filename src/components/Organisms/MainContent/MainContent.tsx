@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 
 import styles from './MainContent.module.scss';
 import { Dropdown } from '../../Atoms';
-import { Character, DataResponse } from '../../../interfaces/characters.interface';
+import { Character } from '../../../interfaces/characters.interface';
 import { CharacterCard } from '../../Molecules';
 
 interface Props {
@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const MainContent: FC<Props> = ({ characters }) => {
-    console.log(characters);
 
     const [optSelected, setOptSelected] = useState<'list' | 'grid'>('grid');
 

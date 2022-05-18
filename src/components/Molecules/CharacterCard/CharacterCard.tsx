@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Character } from '../../../interfaces/characters.interface';
 import { ThumbGauge } from '../../Atoms';
 import styles from './CharacterCard.module.scss';
-import { calcPercent } from '../../../utils/calculations';
+import { calcPercent, calcTime } from '../../../utils/calculations';
 
 interface Props {
     character: Character;
@@ -12,8 +12,11 @@ export const CharacterCard: FC<Props> = ({ character, type }) => {
     const { name, description, category, picture, lastUpdated, votes } = character;
     const [reputation, setReputation] = useState<string>('');
     const [selectedVote, setSelectedVote] = useState<string>('');
+    const [smallText, setsmallText] = useState<string>('');
+
     useEffect(() => {
         getReputation();
+        setsmallText(calcTime(lastUpdated));
     }, [])
 
     const getReputation = (): void => {
@@ -42,7 +45,7 @@ export const CharacterCard: FC<Props> = ({ character, type }) => {
                     <p>{description}</p>
                 </div>
                 <div className={styles[`card__body__vote`]}>
-                    <small>24 days ago in Business</small>
+                    <small>{smallText}</small>
                     <div className={styles[`card__body__vote__btns`]}>
                         <button className={`icon-button ${styles["icon-button"]} ${selectedVote === 'positive' && styles['icon-button--selected']}`} aria-label="thumbs up"
                             onClick={() => handleSelectVote('positive')}

@@ -9,7 +9,7 @@ export interface Character {
     description: string;
     category: string;
     picture: string;
-    lastUpdated: Date;
+    lastUpdated: string;
     votes: Votes;
 }
 
