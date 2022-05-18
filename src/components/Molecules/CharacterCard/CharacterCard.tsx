@@ -12,24 +12,24 @@ interface Props {
 }
 export const CharacterCard: FC<Props> = ({ character, type, }) => {
     const [person, setPerson] = useState<Character>(character);
-    const [reputation, setReputation] = useState<string>('');
+    const [typeReputation, setTypeReputation] = useState<string>('');
     const [selectedVote, setSelectedVote] = useState<'negative' | 'positive' | undefined>(undefined);
     const [isVoted, setIsVoted] = useState<boolean>(false);
     const [smallText, setSmallText] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     useEffect(() => {
-        getReputation()
+        getTypeReputation()
         setSmallText(getSmallText(person.lastUpdated, person.id, person.category));
         setIsVoted(existInVoted(person.id))
     }, [person, isVoted])
 
-    const getReputation = (): void => {
+    const getTypeReputation = (): void => {
         const total = person.votes.negative + person.votes.positive;
         const neg = calcPercent(person.votes.negative, total);
         const pos = calcPercent(person.votes.positive, total);
         const rep = pos >= neg ? 'thumbs up' : 'thumbs down';
-        setReputation(rep);
+        setTypeReputation(rep);
     }
 
     const handleSelectVote = (voteType: 'negative' | 'positive'): void => {
@@ -87,8 +87,8 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
                                 </button>
                         }
                     </div>
-                    <button className={`icon-button ${styles["icon-button"]} ${styles[`card__body_reputation--${type}`]} `} aria-label={reputation}>
-                        <img src={`/img/thumbs-${reputation.split(' ')[1]}.svg`} alt={reputation} />
+                    <button className={`icon-button ${styles["icon-button"]} ${styles[`card__body_reputation--${type}`]} `} aria-label={typeReputation}>
+                        <img src={`/img/thumbs-${typeReputation.split(' ')[1]}.svg`} alt={typeReputation} />
                     </button>
                 </div>
             </section>

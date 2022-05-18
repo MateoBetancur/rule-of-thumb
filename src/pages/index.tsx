@@ -31,10 +31,16 @@ const Home: NextPage<Props> = ({ characters }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const { data } = await api.get<DataResponse<Character[]>>('/api/getCharacters');
+  let response;
+  try {
+    const { data } = await api.get<DataResponse<Character[]>>('/api/getCharacters');
+    response = data;
+  } catch (error) {
+    throw new Error("Check environment variables [DOMAIN]");
+  }
   return {
     props: {
-      characters: data.data
+      characters: response.data
     },
   }
 }
