@@ -24,8 +24,6 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
         setIsVoted(existInVoted(person.id))
     }, [person, isVoted])
 
-
-
     const getReputation = (): void => {
         const total = person.votes.negative + person.votes.positive;
         const neg = calcPercent(person.votes.negative, total);
@@ -61,7 +59,6 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
     return (
         <article className={styles[`card--${type}`]}>
             <img src={`/img/${person.picture}`} alt={person.name} />
-
             <section className={styles[`card__body--${type}`]}>
                 <div className={styles[`card__body__info`]}>
                     <h3>{person.name}</h3>
@@ -73,14 +70,12 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
                         {
                             !isVoted ?
                                 <>
-                                    <button className={`icon-button ${styles["icon-button"]} ${selectedVote === 'positive' && styles['icon-button--selected']}`} aria-label="thumbs up"
-                                        onClick={() => handleSelectVote('positive')}
-                                    >
+                                    <button className={`icon-button ${styles["icon-button"]} ${selectedVote === 'positive' && styles['icon-button--selected']}`}
+                                        aria-label="thumbs up" onClick={() => handleSelectVote('positive')}>
                                         <img src="/img/thumbs-up.svg" alt="thumbs up" />
                                     </button>
-                                    <button className={`icon-button ${styles["icon-button"]} ${selectedVote === 'negative' && styles['icon-button--selected']}`} aria-label="thumbs down"
-                                        onClick={() => handleSelectVote('negative')}
-                                    >
+                                    <button className={`icon-button ${styles["icon-button"]} ${selectedVote === 'negative' && styles['icon-button--selected']}`}
+                                        aria-label="thumbs down" onClick={() => handleSelectVote('negative')} >
                                         <img src="/img/thumbs-down.svg" alt="thumbs down" />
                                     </button>
                                     <button className={`icon-button`} disabled={!selectedVote || isLoading} aria-label="vote now" onClick={onSubmitVote}>
@@ -97,7 +92,6 @@ export const CharacterCard: FC<Props> = ({ character, type, }) => {
                     </button>
                 </div>
             </section>
-
             <section className={styles["card_thumb-container"]}>
                 <ThumbGauge votes={person.votes} />
             </section>

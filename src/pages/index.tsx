@@ -1,6 +1,5 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
-import { GetStaticProps } from 'next';
 import {
   BannerTop, BannerBottom, NavBar,
   Header, Footer, MainContent
@@ -30,13 +29,13 @@ const Home: NextPage<Props> = ({ characters }) => {
     </div>
   )
 }
-export const getStaticProps: GetStaticProps = async () => {
+
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data } = await api.get<DataResponse<Character[]>>('/api/getCharacters');
   return {
     props: {
       characters: data.data
     },
-    revalidate: 1
   }
 }
 
